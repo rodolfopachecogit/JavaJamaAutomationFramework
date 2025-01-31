@@ -155,16 +155,6 @@ Example Login Page (`LoginPage.java`):
         }
     }
 
-## ⏩ Running Parallel Tests
-Modify `TestRunner.java`:
-```
-@CucumberOptions(
-        features = "src/test/resources/features",
-        glue = "com.jamaautomation.framework.steps",
-        plugin = {"pretty", "html:target/cucumber-reports"},
-        monochrome = true
-)
-```
 Run tests:
   `mvn clean test`
 or run individual tests via feature files in IntelliJ IDEA
