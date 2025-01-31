@@ -1,5 +1,5 @@
 Feature: Login Functionality
 
-  Scenario: User logs in with valid credentials
+  Scenario: Get Application Version
     Given the user is on the login page
     Then I validate version text is displayed
