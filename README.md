@@ -2,6 +2,9 @@
 
 A Test Automation Framework built using Java, Maven, Selenium, and Cucumber to automate web application testing efficiently.
 
+## 📂 Project Structure
+
+```plaintext
 JamaTestAutomationFramework/
 ├── src/
 │   ├── test/
@@ -29,9 +32,9 @@ JamaTestAutomationFramework/
 │   │   ├── features/
 │   │   │   ├── login.feature
 │   │   │   ├── stream.feature
+```
 
-
-## Technologies Used
+## 🛠️ Technologies Used
 - Java 11+ – Programming Language
 - Maven – Build & Dependency Management
 - Selenium WebDriver – Web Automation
@@ -39,55 +42,65 @@ JamaTestAutomationFramework/
 - JUnit 5 – Test Execution
 - WebDriverManager – Driver Management
 
-## Prerequisites
+## 📌 Prerequisites
 Before running the framework, ensure you have the following installed:
 - Java JDK 11+
 - Maven (check with `mvn -version`)
 - Chrome WebDriver (Managed via WebDriverManager)
 
-## Setup Instructions
-1. Clone the Repository
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the Repository
+   ```
    git clone https://github.com/your-repo/JavaJamaTestAutomationFramework.git
    cd JavaJamaTestAutomationFramework
+   ```
 
-2. Install Dependencies
+### 2️⃣ Install Dependencies
+   ```
    mvn clean install
-
-3. Configure Test Settings
+   ```
+### 3️⃣ Configure Test Settings
    Modify `config.properties` (src/test/resources/config/config.properties):
 
-   baseUrl=https://example.com/login](https://qareplicated-kotsdm-nginx-1.jamasoftware.net/login.req
+   ```
+   baseUrl=https://qareplicated-kotsdm-nginx-1.jamasoftware.net/login.req
    browser=chrome
    timeout=10
    username=USERNAME (Your username)
    password=PASSWORD (Your password)
+   ```
 
-## Running the Tests
+## 🚀 Running the Tests
 - Run All Tests:
-  mvn clean test
+  `mvn clean test`
 
 - Run Tests in a Specific Browser:
-  mvn clean test -Dbrowser=firefox
+  `mvn clean test -Dbrowser=firefox`
 
-## Writing Test Cases
+## 📝 Writing Test Cases
 Example Cucumber Feature File (`login.feature`):
+```
 Feature: Login Functionality
 
   Scenario: User logs in with valid credentials
     Given the user is on the login page
     Then I validate version text is displayed
+```
 
 Example Step Definitions (`LoginStepDefinitions.java`):
 
+```
   @Given("the user is on the login page")
   public void theUserIsOnTheLoginPage() {
       loginPage = new LoginPage(Hooks.driver);
       Hooks.driver.get(ConfigReader.getProperty("baseUrl"));
   }
-
-## Page Object Model (POM)
+```
+## 📂 Page Object Model (POM)
 Example Login Page (`LoginPage.java`):
 
+```
  public class LoginPage extends BasePage{
 
     // Locators
@@ -111,9 +124,8 @@ Example Login Page (`LoginPage.java`):
     public String getLoginVersionNumberText(){
         return getElementText(loginVersionNumber);
     }
-}
-
-## Hooks for Setup & Teardown (`Hooks.java`)
+```
+## 🔄 Hooks for Setup & Teardown (`Hooks.java`)
 
     @Before
     public void setUp() {
@@ -143,20 +155,19 @@ Example Login Page (`LoginPage.java`):
         }
     }
 
-## Running Parallel Tests
+## ⏩ Running Parallel Tests
 Modify `TestRunner.java`:
-
+```
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.jamaautomation.framework.steps",
         plugin = {"pretty", "html:target/cucumber-reports"},
         monochrome = true
 )
+```
+Run tests:
+  `mvn clean test`
+or run individual tests via feature files in IntelliJ IDEA
 
-Run:
-  mvn clean test
-  OR
-  Choose any individual test using the feature files on IntelliJIDEA
-
-## Need Help?
+## 📜 Need Help?
 For any issues, feel free to raise a ticket in the GitHub Issues section.
